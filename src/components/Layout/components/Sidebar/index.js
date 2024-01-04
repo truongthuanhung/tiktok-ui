@@ -1,6 +1,6 @@
 function Sidebar() {
     return (
-        <h2>Sidebar</h2>
+        <aside className="w-[356px]">Sidebar</aside>
     );
 }
 
