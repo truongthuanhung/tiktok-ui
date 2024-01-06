@@ -38,7 +38,7 @@ function Button({
         props.href = href;
         Comp = 'a';
     }
-    const classes = cx('text-[16px] font-bold min-w-[100px] rounded-[4px] border border-solid inline-flex items-center justify-center', {
+    const classes = cx('text-[16px] font-bold min-w-[100px] rounded-[4px] border border-solid', {
         [className]: className,
         primary,
         outline,
