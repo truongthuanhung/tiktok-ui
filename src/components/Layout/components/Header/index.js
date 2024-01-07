@@ -5,18 +5,17 @@ import 'tippy.js/dist/tippy.css';
 import { useState } from 'react';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
+import Image from '~/components/Image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
     faCircleXmark,
-    faCloudUpload,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
     faGear,
     faKeyboard,
     faMagnifyingGlass,
-    faMessage,
     faSignOut,
     faSpinner,
     faUser,
@@ -25,6 +24,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '../AccountItem';
 import Button from '../Button';
 import Menu from '~/components/Popper/Menu';
+import { UploadIcon } from '~/components/Icons';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -65,7 +65,7 @@ function Header() {
         {
             icon: <FontAwesomeIcon icon={faUser} />,
             title: 'View profile',
-            to: '/feedback',
+            to: '/profile',
         },
         {
             icon: <FontAwesomeIcon icon={faCoins} />,
@@ -141,7 +141,7 @@ function Header() {
                         <>
                             <Tippy content="Upload video" placement="bottom" delay={[0, 200]}>
                                 <button className="bg-transparent text-[22px] text-[#161823] px-[12px] py-[4px] cursor-pointer">
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -157,7 +157,7 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://vcdn1-giaitri.vnecdn.net/2016/03/09/top-1457498542.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=2i9KQ-qrQQyV0tigRQ9-Rg"
                                 alt="Nguyen Van A"
                                 className="w-[32px] h-[32px] object-cover rounded-[50%] ml-[12px] block cursor-pointer"
