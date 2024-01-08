@@ -1,9 +1,10 @@
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from '~/components/Image';
 function AccountItem() {
     return (
         <div className="flex items-center px-[16px] py-[6px] cursor-pointer hover:bg-[#16182308]">
-            <img
+            <Image
                 className="block w-[40px] h-[40px] rounded-[50%] object-cover"
                 src="https://i.pinimg.com/736x/59/46/ae/5946ae711b61a1937c65a892dccfc6f5.jpg"
                 alt=""

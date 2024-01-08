@@ -1,0 +1,25 @@
+.search {
+    border: 1.5px solid transparent;
+    &::after {
+        content: '';
+        position: absolute;
+        height: 28px;
+        width: 2px;
+        top: 9px;
+        right: 52px;
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+    &:focus-within {
+        border: 1.5px solid rgba(22, 24, 35, 0.2);
+    }
+    input:not(:placeholder-shown) ~.search-btn {
+        color: rgba(22, 24, 35, 0.75);
+    }
+}
+.clear, .loading {
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.search-btn {
+    color: rgba(22, 24, 35, 0.34);
+}
