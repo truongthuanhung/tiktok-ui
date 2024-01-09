@@ -1,22 +1,23 @@
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from '~/components/Image';
-function AccountItem() {
+import { Link } from 'react-router-dom';
+function AccountItem({ data }) {
     return (
-        <div className="flex items-center px-[16px] py-[6px] cursor-pointer hover:bg-[#16182308]">
+        <Link to={`/@${data.nickname}`} className="flex items-center px-[16px] py-[6px] cursor-pointer hover:bg-[#16182308]">
             <Image
                 className="block w-[40px] h-[40px] rounded-[50%] object-cover"
-                src="https://i.pinimg.com/736x/59/46/ae/5946ae711b61a1937c65a892dccfc6f5.jpg"
-                alt=""
+                src={data.avatar}
+                alt={data.avatar}
             />
             <div className="flex-1 ml-[12px]">
                 <p className="text-[16px] font-semibold">
-                    <span>Nguyen Van A</span>
-                    <FontAwesomeIcon icon={faCircleCheck} className="ml-[6px] text-[12px] text-[#20D5EC]" />
+                    <span>{data.full_name}</span>
+                    {data.tick && <FontAwesomeIcon icon={faCircleCheck} className="ml-[6px] text-[12px] text-[#20D5EC]" />}
                 </p>
-                <span className='text-[14px] text-[#16182380]'>nguyenvana</span>
+                <span className="text-[14px] text-[#16182380]">{data.nickname}</span>
             </div>
-        </div>
+        </Link>
     );
 }
 

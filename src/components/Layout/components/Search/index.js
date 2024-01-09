@@ -12,14 +12,33 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 1, 1, 1]);
-        }, 0);
-    }, []);
+        if (!searchValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data.data);
+                setSearchResult(data.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                setLoading(false);
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }, [searchValue]);
 
     const handleHideResult = () => {
         setShowResult(false);
@@ -32,9 +51,9 @@ function Search() {
                 <div className="w-[361px]" tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <p className="text-[#16182380] text-[14px] font-semibold px-[12px] py-[5px]">Accounts</p>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResult.map((result) => (
+                            <AccountItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -56,22 +75,24 @@ function Search() {
                     spellCheck={false}
                     className="h-full text-[#000] text-[1.6rem] border-none bg-transparent outline-0 flex-1 caret-[#fe2c55]"
                 />
-                {!!searchResult && (
+                {!!searchResult && !loading && (
                     <button
                         onClick={() => {
                             setSearchValue('');
                             setSearchResult([]);
                             inputRef.current.focus();
                         }}
-                        className={cx('clear', 'absolute right-[68px] bottom-1/2 translate-y-1/2')}
+                        className={cx('clear')}
                     >
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
 
-                {/* <button className={cx('loading', 'absolute right-[68px] bottom-1/2 translate-y-1/2')}>
-                    <FontAwesomeIcon icon={faSpinner} />
-                </button> */}
+                {loading && (
+                    <button className={cx('loading')}>
+                        <FontAwesomeIcon icon={faSpinner} />
+                    </button>
+                )}
 
                 <button
                     className={cx(
