@@ -1,6 +1,5 @@
 import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/Layout/components/AccountItem';
 import MenuItem from './MenuItem';
 import Header from './Header';
 import { useState } from 'react';

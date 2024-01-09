@@ -8,6 +8,7 @@ import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { SearchIcon } from '~/components/Icons';
+import * as searchServices from '~/apiServices/searchServices';
 const cx = classNames.bind(styles);
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
@@ -24,21 +25,17 @@ function Search() {
             return;
         }
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setSearchResult(data.data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                setLoading(false);
-                console.error('There was a problem with the fetch operation:', error);
-            });
+
+        const fetchApi = async () => {
+            setLoading(true);
+
+            const result = await searchServices.search(debounced);
+
+            setSearchResult(result);
+            setLoading(false);
+        };
+
+        fetchApi();
     }, [debounced]);
 
     const handleHideResult = () => {
@@ -52,7 +49,7 @@ function Search() {
                 <div className="w-[361px]" tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <p className="text-[#16182380] text-[14px] font-semibold px-[12px] py-[5px]">Accounts</p>
-                        {searchResult.map((result) => (
+                        {searchResult?.map((result) => (
                             <AccountItem key={result.id} data={result} />
                         ))}
                     </PopperWrapper>

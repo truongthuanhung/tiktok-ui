@@ -1,4 +1,3 @@
-import Button from '~/components/Layout/components/Button';
 import { Link } from 'react-router-dom';
 function MenuItem({ data, onClick }) {
     let Comp = 'button';
