@@ -29,6 +29,7 @@ function Menu({ children, items = [], onChange = () => {} }) {
             interactive
             delay={[0, 700]}
             offset={[12, 8]}
+            hideOnClick={false}
             placement="bottom-end"
             render={(attrs) => (
                 <div className="w-[224px]" tabIndex="-1" {...attrs}>

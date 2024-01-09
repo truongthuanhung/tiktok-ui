@@ -41,6 +41,18 @@ function Search() {
     const handleHideResult = () => {
         setShowResult(false);
     };
+
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (searchValue.startsWith(' ')) {
+            return;
+        }
+        setSearchValue(searchValue);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
     return (
         <Tippy
             visible={showResult && searchResult.length > 0}
@@ -66,7 +78,7 @@ function Search() {
                 <input
                     type="text"
                     value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     ref={inputRef}
                     onFocus={() => setShowResult(true)}
                     placeholder="Search accounts and videos"
@@ -97,6 +109,7 @@ function Search() {
                         'search-btn',
                         'flex items-center justify-center h-full relative w-[52px] hover:bg-[#16182308] active:bg-[#16182308]  rounded-tr-[92px] rounded-br-[92px] cursor-pointer text-[1.8rem]',
                     )}
+                    onMouseDown={handleSubmit}
                 >
                     <SearchIcon />
                 </button>

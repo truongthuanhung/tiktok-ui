@@ -19,6 +19,8 @@ import {
 import Button from '../Button';
 import Menu from '~/components/Popper/Menu';
 import { UploadIcon } from '~/components/Icons';
+import { Link } from 'react-router-dom';
+import routesConfig from '~/config/routes';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -81,9 +83,9 @@ function Header() {
     return (
         <header className={cx('wrapper', 'h-[60px]', 'flex', 'justify-center', 'w-full')}>
             <div className="w-[1150px] h-full flex items-center justify-between px-[24px]">
-                <div>
+                <Link to={routesConfig.home} className='flex items-center justify-center'>
                     <img src={images.logo} alt="Tiktok" />
-                </div>
+                </Link>
                 <Search />
                 <div className="actions flex items-center">
                     {currentUser ? (
