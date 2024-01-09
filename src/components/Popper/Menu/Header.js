@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Header({ title, onBack }) {
     return (
-        <header className="h-[50px] relative mt-[-8px]">
+        <header className="h-[50px] relative mt-[-8px] flex-shrink-0">
             <button className="w-[50px] h-full cursor-pointer" onClick={onBack}>
                 <FontAwesomeIcon icon={faChevronLeft} />
             </button>

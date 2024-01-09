@@ -40,7 +40,7 @@ function Menu({ children, items = [], onChange = () => {} }) {
                                 onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
                             />
                         )}
-                        {renderItems()}
+                        <div className="overflow-y-auto">{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}

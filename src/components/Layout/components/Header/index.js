@@ -81,7 +81,7 @@ function Header() {
         },
     ];
     return (
-        <header className={cx('wrapper', 'h-[60px]', 'flex', 'justify-center', 'w-full')}>
+        <header className={cx('wrapper', 'h-[60px]', 'flex', 'justify-center', 'w-full', 'fixed', 'top-0', 'left-0', 'bg-white z-10')}>
             <div className="w-[1150px] h-full flex items-center justify-between px-[24px]">
                 <Link to={routesConfig.home} className='flex items-center justify-center'>
                     <img src={images.logo} alt="Tiktok" />
