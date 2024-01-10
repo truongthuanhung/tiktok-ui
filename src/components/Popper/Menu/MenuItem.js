@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 function MenuItem({ data, onClick }) {
     let Comp = 'button';
     const props = {
@@ -12,11 +13,22 @@ function MenuItem({ data, onClick }) {
         Comp = 'a';
     }
     return (
-        <Comp className={data.separated ? "text-[16px] font-bold w-full block border border-solid border-transparent text-left px-[16px] py-[11px] hover:bg-[#16182308] border-t border-t-[#1618231f]" : "text-[16px] font-bold w-full block border border-solid border-transparent text-left px-[16px] py-[11px] hover:bg-[#16182308]"} {...props}>
+        <Comp
+            className={
+                data.separated
+                    ? 'text-[16px] font-bold w-full block border border-solid border-transparent text-left px-[16px] py-[11px] hover:bg-[#16182308] border-t border-t-[#1618231f]'
+                    : 'text-[16px] font-bold w-full block border border-solid border-transparent text-left px-[16px] py-[11px] hover:bg-[#16182308]'
+            }
+            {...props}
+        >
             <span className="mr-[8px] inline-block w-[24px] text-center">{data.icon}</span>
             {data.title}
         </Comp>
     );
 }
 
+MenuItem.propTypes = {
+    data: PropTypes.object.isRequired,
+    onClick: PropTypes.func,
+};
 export default MenuItem;
