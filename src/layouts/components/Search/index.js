@@ -98,13 +98,13 @@ function Search() {
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
                     )}
-    
+
                     {loading && (
                         <button className={cx('loading')}>
                             <FontAwesomeIcon icon={faSpinner} />
                         </button>
                     )}
-    
+
                     <button
                         className={cx(
                             'search-btn',
