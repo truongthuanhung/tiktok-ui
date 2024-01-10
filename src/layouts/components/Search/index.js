@@ -8,7 +8,7 @@ import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { SearchIcon } from '~/components/Icons';
-import * as searchServices from '~/apiServices/searchServices';
+import * as searchServices from '~/services/searchService';
 const cx = classNames.bind(styles);
 function Search() {
     const [searchResult, setSearchResult] = useState([]);

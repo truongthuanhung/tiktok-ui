@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Button.module.scss';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 const cx = classNames.bind(styles);
 function Button({
     to,
@@ -54,11 +55,13 @@ function Button({
 
     return (
         <Comp className={classes} {...props}>
-            {leftIcon && <span className='mr-[8px]'>{leftIcon}</span>}
+            {leftIcon && <span className="mr-[8px]">{leftIcon}</span>}
             <span>{children}</span>
-            {rightIcon && <span className='ml-[8px]'>{rightIcon}</span>}
+            {rightIcon && <span className="ml-[8px]">{rightIcon}</span>}
         </Comp>
     );
 }
-
+Button.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 export default Button;
