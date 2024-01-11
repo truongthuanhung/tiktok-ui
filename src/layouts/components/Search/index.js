@@ -84,7 +84,7 @@ function Search() {
                         onFocus={() => setShowResult(true)}
                         placeholder="Search accounts and videos"
                         spellCheck={false}
-                        className="h-full text-[#000] text-[1.6rem] border-none bg-transparent outline-0 flex-1 caret-[#fe2c55]"
+                        className="pr-[40px] h-full text-[#000] text-[1.6rem] border-none bg-transparent outline-0 flex-1 caret-[#fe2c55]"
                     />
                     {!!searchResult && !loading && (
                         <button

@@ -55,7 +55,7 @@ function Header() {
     const handleMenuChange = (menuItem) => {
         console.log(menuItem);
     };
-    const currentUser = true;
+    const currentUser = false;
     const userMenu = [
         {
             icon: <FontAwesomeIcon icon={faUser} />,
