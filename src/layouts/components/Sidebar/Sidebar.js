@@ -1,5 +1,6 @@
 import config from '~/config';
 import { MenuItem } from './Menu';
+import SuggestedAccounts from '../SuggestedAccounts/SuggestedAccounts';
 import Menu from './Menu';
 import {
     HomeIcon,
@@ -32,6 +33,8 @@ function Sidebar() {
                     activeIcon={<LiveActiveIcon />}
                 ></MenuItem>
             </Menu>
+            <SuggestedAccounts label="Suggested accounts" />
+            <SuggestedAccounts label="Following accounts" />
         </aside>
     );
 }
